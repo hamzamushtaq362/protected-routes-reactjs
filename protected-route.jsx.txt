@@ -1,0 +1,11 @@
+import { Navigate } from "react-router-dom";
+
+const ProtectedRoute = ({ children, dashboardId }) => {
+  const storedDashboardId = localStorage.getItem("dashboardId");
+  if (!storedDashboardId || storedDashboardId !== dashboardId) {
+    return <Navigate to="/login" />;
+  }
+  return children;
+};
+
+export default ProtectedRoute;
